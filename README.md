@@ -1,0 +1,2 @@
+# healthcare website
+ Ce projet est un site web multi-pages pour des cliniques médicales, réalisé dans le cadre d'un mini projet de développement web. Il est construit en utilisant uniquement HTML et CSS, et respecte des exigences spécifiques en termes de design et de fonctionnalités. Le site fournit des informations essentielles sur les cliniques et présente un style visuel unifié sur toutes les pages.
