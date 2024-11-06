@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .btn-custom {
+            background-color: #12ac8e;
+            border-color: #12ac8e;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #0e8a6e;
+            border-color: #0e8a6e;
+        }
+        a {
+            color: #12ac8e;
+        }
+        a:hover {
+            color: #0e8a6e;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            if (localStorage.getItem("userLoggedIn") === 'true') {
+                window.location.href = 'index.html';
+            }
+        };
+
+        function login(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const storedUser = localStorage.getItem("user_" + username);
+
+            if (storedUser) {
+                const user = JSON.parse(storedUser);
+                if (user.password === password) {
+                    localStorage.setItem('userLoggedIn', 'true');
+                    window.location.href = 'index.html';
+                } else {
+                    alert("Mot de passe incorrect");
+                }
+            } else {
+                alert("Nom d'utilisateur incorrect");
+            }
+        }
+    </script>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center mb-4">Connexion</h1>
+                <form onsubmit="login(event)" class="bg-white p-4 shadow rounded">
+                    <div class="form-group">
+                        <label for="username">Nom d'utilisateur:</label>
+                        <input type="text" class="form-control" id="username" required placeholder="Nom d'utilisateur">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe:</label>
+                        <input type="password" class="form-control" id="password" required placeholder="Mot de passe">
+                    </div>
+                    <button type="submit" class="btn btn-custom btn-block">Connexion</button>
+                    <p class="text-center mt-3">Pas encore inscrit? <a href="inscription.html">Inscription</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

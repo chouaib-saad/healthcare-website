@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .btn-custom {
+            background-color: #12ac8e;
+            border-color: #12ac8e;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #0e8a6e;
+            border-color: #0e8a6e;
+        }
+        a {
+            color: #12ac8e;
+        }
+        a:hover {
+            color: #0e8a6e;
+        }
+    </style>
+    <script>
+        function register(event) {
+            event.preventDefault();
+            const username = document.getElementById('newUsername').value;
+            const email = document.getElementById('newEmail').value;
+            const password = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password === confirmPassword) {
+                const user = { username, email, password };
+                localStorage.setItem("user_" + username, JSON.stringify(user));
+                alert("Inscription réussie !");
+                window.location.href = 'login.html';
+            } else {
+                alert("Les mots de passe ne correspondent pas");
+            }
+        }
+    </script>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center mb-4">Inscription</h1>
+                <form onsubmit="register(event)" class="bg-white p-4 shadow rounded">
+                    <div class="form-group">
+                        <label for="newUsername">Nom d'utilisateur:</label>
+                        <input type="text" class="form-control" id="newUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newEmail">Email:</label>
+                        <input type="email" class="form-control" id="newEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">Mot de passe:</label>
+                        <input type="password" class="form-control" id="newPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmer le mot de passe:</label>
+                        <input type="password" class="form-control" id="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-custom btn-block">S'inscrire</button>
+                    <p class="text-center mt-3">Déjà inscrit? <a href="login.html">Connexion</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
